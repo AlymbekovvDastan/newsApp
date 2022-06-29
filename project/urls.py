@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+admin.site.site_header = 'NewsProject'
+admin.site.site_title = 'NewsProject'
+
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls'), {}),
     path('news/', include('news.urls')),
