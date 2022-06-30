@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     'django_quill',
 
-    'news',
+    'articles',
 ]
 
 MIDDLEWARE = [

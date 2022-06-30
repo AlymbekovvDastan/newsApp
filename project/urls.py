@@ -20,7 +20,7 @@ admin.site.site_header = 'NewsProject'
 admin.site.site_title = 'NewsProject'
 
 urlpatterns = [
-    path('accounts/', include('django.contrib.auth.urls'), {}),
-    path('news/', include('news.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('articles/', include('articles.urls')),
     path('admin/', admin.site.urls),
 ]

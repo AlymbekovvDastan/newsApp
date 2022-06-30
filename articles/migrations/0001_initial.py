@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('image', models.ImageField(upload_to='images/')),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='news.post')),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='articles.post')),
             ],
         ),
     ]
