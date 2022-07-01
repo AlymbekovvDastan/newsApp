@@ -1,1 +1,1 @@
-# newsProject
+# newsApp

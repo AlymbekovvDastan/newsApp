@@ -27,7 +27,21 @@
         </div>
     {% endfor %}
 
+    <div class="d-flex justify-content-between grid-img-right mt-4 text-right bg bg1" style="margin-bottom: 50px;">
+        {% include 'include/pagination.html' %}
+        <div class="d-flex justify-content-end">
+
+            <form method="GET" >
+                   <select name="paginate_by"  id="" style="width: 50px; height: 35px;">
+                        <option value="20">10</option>
+                        <option value="30">20</option>
+                        <option value="50">50</option>
+                    </select>
+                    <input class="btn btn-outline-secondary" type="submit" value="Paginate" style="margin-bottom: 7.5px;">
+            </form>
+        </div>
+    </div>
+
 
 {% endblock content %}
 
-<!--style="width: 740px; height: 420px"-->

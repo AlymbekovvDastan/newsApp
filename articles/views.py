@@ -11,6 +11,10 @@ class ArticleListView(ListView):
     model = Article
     template_name = 'articles/article_list.html'
     context_object_name = 'article_list'
+    paginate_by = 10
+
+    def get_paginate_by(self, queryset):
+        return self.request.GET.get('paginate_by', self.paginate_by)
 
 
 class ArticleCreateView(LoginRequiredMixin, CreateView):
