@@ -13,6 +13,12 @@ class ArticleListView(ListView):
     context_object_name = 'article_list'
     paginate_by = 10
 
+    def get_queryset(self):
+        search_text = self.request.GET.get('search', '')
+        if search_text != "":
+            return self.model.objects.filter(title__icontains=search_text)
+        return self.model.objects.all()
+
     def get_paginate_by(self, queryset):
         return self.request.GET.get('paginate_by', self.paginate_by)
 
