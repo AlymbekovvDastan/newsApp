@@ -1,18 +1,31 @@
 version: '3.9'
 
 services:
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/newsApp/static
+      - media_volume:/newsApp/media
+    ports:
+      - 8000:80
+
+    depends_on:
+      - web
+
   web:
     build: .
-    command: gunicorn django_project.wsgi -b 0.0.0.0:8000
+    command:  bash -c "python manage.py migrate --no-input && python manage.py collectstatic --no-input
+      && gunicorn project.wsgi:application --bind 0.0.0.0:8001"
     volumes:
-      - .:/code
+      - .:/newsApp
     ports:
-      - 8000:8000
+      - 8001:8001
     depends_on:
       - db
     environment:
       - "DJANGO_SECRET_KEY=django-insecure-hv1(e0r@v4n4m6gqdz%dn(60o=dsy8&@0_lbs8p-v3u^bs4)xl"
       - "DJANGO_DEBUG=True"
+      - "DATABASE_URL=postgres://user_name:user_password@db/database_name"
   db:
     image: postgres:13
     volumes:
@@ -22,3 +35,5 @@ services:
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:
