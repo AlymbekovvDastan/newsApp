@@ -20,12 +20,10 @@ class Article(models.Model):
     def save(self, *args, **kwargs):
         super().save()
         img = Image.open(self.image.path)
-        img.thumbnail((740, 420))
-        img.save(self.image.path)
-
-    def delete(self, *args, **kwargs):
-        self.image.delete()
-        super().delete(*args, **kwargs)
+        width, height = img.size
+        if width*height > 740*420:
+            img.thumbnail((740, 420))
+            img.save(self.image.path)
 
     def __str__(self):
         return self.title
