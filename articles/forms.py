@@ -1,12 +1,13 @@
 from django import forms
-from django_quill.forms import QuillFormField
 
 from articles.models import Article
 
 
-class ArticleForm(forms.Form):
-    body = QuillFormField()
+class ArticleForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['image'].widget.attrs.update({'class': 'form-control'})
 
     class Meta:
         model = Article
-        fields = ('title', 'body', 'date', )
+        fields = ('title', 'body', 'image')

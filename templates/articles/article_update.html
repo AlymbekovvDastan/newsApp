@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Edit</h1>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="mb-3">
+
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" maxlength="350"
+           value="{{ form.title.value|default_if_none:'' }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">body</label>
+    {{ form.media}}
+    {{ form.body }}
+  </div>
+  <div class="mb-3">
+    {{ form.image }}
+  </div>
+  <div class="mb-3 text-end">
+    <button type="submit" class="btn btn-secondary">Submit</button>
+  </div>
+
+</form>
+{% endblock content %}

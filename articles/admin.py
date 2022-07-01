@@ -9,12 +9,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'date',)
     list_filter = ('author', 'date')
     search_fields = ('author', 'date')
-    readonly_fields = ['article_images',]
+    readonly_fields = ['article_image',]
 
-    def article_images(self, obj):
-        html = ''
-
-        for img in obj.images.all():
-            html += f'<img src="{img.url}" width="{img.width}" height={img.height} />'
-
-        return mark_safe(html)
+    def article_image(self, obj):
+        return mark_safe(f'<img src="{obj.url}" width="{obj.width}" height={obj.height} />')
