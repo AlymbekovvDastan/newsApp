@@ -6,7 +6,7 @@ A web app made using the `django` framework. Frontend using `html` and `bootstra
 ## Requirements
 
 Python 3.8  
-Django 3.2
+Django 3.2  
 Docker and docker-compose
 
 ## Setting up the Project
