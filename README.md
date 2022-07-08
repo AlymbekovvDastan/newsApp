@@ -21,12 +21,4 @@ Docker and docker-compose
   * Run the project `$ docker-compose up --d`  
   * Create superuser `$ docker-compose exec web python ./manage.py createsuperuser`
 
-## Description of the system
-
-  * The author is created, deleted and edited in the admin panel
-    ( [urls](http://127.0.0.1:8000/admin/auth/user/) ).
-
-  * Authorized users can [create](http://127.0.0.1:8000/create), edit and delete articles.
-
-  * [List of articles](http://127.0.0.1:8000/)
 
